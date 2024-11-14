@@ -8,7 +8,7 @@ The service can be installed and used by carrying out the following steps:
 
 ```
 # configuration.yaml entry
-onvif_timesync.timesync:
+onvif_timesync:
 ```
 
 3. Reload Home Assistant for the customer component to be loaded up.
