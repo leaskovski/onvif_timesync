@@ -1,0 +1,7 @@
+{
+  "domain": "onvif_timesync",
+  "name": "ONVIF Time Syncrhonisation Tool",
+  "documentation": "https://github.com/leaskovski/onvif_timesync",
+  "requirements": ["onvif_zeep==0.3.4"],
+  "codeowners": ["@Leaskovski"]
+}
