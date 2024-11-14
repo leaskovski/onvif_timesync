@@ -28,27 +28,28 @@ def setup(hass, config):
         username = call.data.get(ATTR_USER, '')
         password = call.data.get(ATTR_PWD, '')
 
-        # Create an ONVIF camera object using the service call parameters
-        mycam = ONVIFCamera(address, port, username, password, '/usr/local/bin/onvif_timesync/python-onvif-zeep/wsdl')
-
-        # Create a time object to use to set the time with
-        time_params = mycam.devicemgmt.create_type('SetSystemDateAndTime')
-        time_params.DateTimeType = 'Manual'
-        time_params.DaylightSavings = True
-
-        # Set the Timezone and the current time
-        TZ = {'TZ':datetime.datetime.now().astimezone().tzname()}
-        time_params.TimeZone = TZ
-        today = datetime.datetime.now()
-
-        # Load the time object up with all the details for the date, time and timezone
-        Date = {'Year':today.year,'Month':today.month,'Day':today.day}
-        Time = {'Hour':today.hour,'Minute':today.minute,'Second':today.second}
-        UTC = {'Date':Date,'Time':Time}
-        time_params.UTCDateTime = UTC
-
-        # Set the cameras date and time
-        mycam.devicemgmt.SetSystemDateAndTime(time_params)
+        if (address != "" amd username != "" and password != ""): 
+            # Create an ONVIF camera object using the service call parameters
+            mycam = ONVIFCamera(address, port, username, password, '/usr/local/bin/onvif_timesync/python-onvif-zeep/wsdl')
+    
+            # Create a time object to use to set the time with
+            time_params = mycam.devicemgmt.create_type('SetSystemDateAndTime')
+            time_params.DateTimeType = 'Manual'
+            time_params.DaylightSavings = True
+    
+            # Set the Timezone and the current time
+            TZ = {'TZ':datetime.datetime.now().astimezone().tzname()}
+            time_params.TimeZone = TZ
+            today = datetime.datetime.now()
+    
+            # Load the time object up with all the details for the date, time and timezone
+            Date = {'Year':today.year,'Month':today.month,'Day':today.day}
+            Time = {'Hour':today.hour,'Minute':today.minute,'Second':today.second}
+            UTC = {'Date':Date,'Time':Time}
+            time_params.UTCDateTime = UTC
+    
+            # Set the cameras date and time
+            mycam.devicemgmt.SetSystemDateAndTime(time_params)
 
     
     hass.services.register(DOMAIN, "timesync", timeSync_handler)
