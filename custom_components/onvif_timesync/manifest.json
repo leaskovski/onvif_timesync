@@ -3,5 +3,6 @@
   "name": "ONVIF Time Syncrhonisation Tool",
   "documentation": "https://github.com/leaskovski/onvif_timesync",
   "requirements": ["onvif_zeep==0.2.12"],
+  "config_flow": true,
   "codeowners": ["@Leaskovski"]
 }
