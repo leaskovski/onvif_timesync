@@ -15,7 +15,7 @@ from .const import (
 )
 
 
-def setup(hass, config):
+def setup(hass, config : onvifTimeSyncConfigFlow):
     """Set up is called when Home Assistant is loading our component."""
 
     def timeSync_handler(call):
