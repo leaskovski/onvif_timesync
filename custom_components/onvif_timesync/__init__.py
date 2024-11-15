@@ -6,14 +6,13 @@ import datetime
 
 _LOGGER = logging.getLogger(__name__)
 
-DOMAIN = "onvif_timesync"
-
-ATTR_ADDRESS = "Address"
-ATTR_PORT = "Port"
-ATTR_USER = "Username"
-ATTR_PWD = "Password"
-
-DEFAULT_NAME = "TimeSync"
+from .const import (
+    DOMAIN,
+    ATTR_ADDRESS,
+    ATTR_PORT,
+    ATTR_USER,
+    ATTR_PWD
+)
 
 
 def setup(hass, config):
