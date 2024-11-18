@@ -18,7 +18,7 @@ from .const import (
 )
 
 
-def setup(hass: HomeAssistant, config: ConfigType) -> bool:
+def setup(hass: HomeAssistant, config: ConfigEntry) -> bool:
     """Set up is called when Home Assistant is loading our component."""
 
     def timeSync_handler(call):
@@ -31,8 +31,11 @@ def setup(hass: HomeAssistant, config: ConfigType) -> bool:
         password = call.data.get(ATTR_PWD, '')
 
         if (address != "" and username != "" and password != ""): 
+
+            path = hass.config.path("custom_components/onvif_timesync/wsdl")
+
             # Create an ONVIF camera object using the service call parameters
-            mycam = ONVIFCamera(address, port, username, password, '/usr/local/bin/onvif_timesync/python-onvif-zeep/wsdl')
+            mycam = ONVIFCamera(address, port, username, password, path)
     
             # Create a time object to use to set the time with
             time_params = mycam.devicemgmt.create_type('SetSystemDateAndTime')

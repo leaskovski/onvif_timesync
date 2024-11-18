@@ -3,10 +3,10 @@
   "name": "ONVIF Time Syncrhonisation Tool",
   "codeowners": ["@Leaskovski"],
   "config_flow": true,
-  "iot_class": "calculated",
   "documentation": "https://github.com/leaskovski/onvif_timesync",
-  "requirements": ["onvif_zeep==0.2.12"],
   "integration_type": "service",
+  "iot_class": "calculated",
+  "requirements": ["onvif_zeep==0.2.12"],
   "single_config_entry": true,
   "version": "0.1.0"
 }
