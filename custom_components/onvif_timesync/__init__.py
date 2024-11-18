@@ -9,6 +9,7 @@ import datetime
 _LOGGER = logging.getLogger(__name__)
 
 from .const import (
+    PLATFORMS,
     DOMAIN,
     SERVICE_NAME,
     ATTR_ADDRESS,
