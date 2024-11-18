@@ -1,6 +1,8 @@
 import logging
-from homeassistant.const import EVENT_HOMEASSISTANT_START, EVENT_HOMEASSISTANT_STOP
-import homeassistant.helpers.config_validation as cv
+
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import HomeAssistant
+
 from onvif import ONVIFCamera
 import datetime
 
@@ -8,6 +10,7 @@ _LOGGER = logging.getLogger(__name__)
 
 from .const import (
     DOMAIN,
+    SERVICE_NAME,
     ATTR_ADDRESS,
     ATTR_PORT,
     ATTR_USER,
@@ -15,7 +18,7 @@ from .const import (
 )
 
 
-def setup(hass, config : onvifTimeSyncConfigFlow):
+async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up is called when Home Assistant is loading our component."""
 
     def timeSync_handler(call):
@@ -27,7 +30,7 @@ def setup(hass, config : onvifTimeSyncConfigFlow):
         username = call.data.get(ATTR_USER, '')
         password = call.data.get(ATTR_PWD, '')
 
-        if (address != "" amd username != "" and password != ""): 
+        if (address != "" and username != "" and password != ""): 
             # Create an ONVIF camera object using the service call parameters
             mycam = ONVIFCamera(address, port, username, password, '/usr/local/bin/onvif_timesync/python-onvif-zeep/wsdl')
     
@@ -51,7 +54,7 @@ def setup(hass, config : onvifTimeSyncConfigFlow):
             mycam.devicemgmt.SetSystemDateAndTime(time_params)
 
     
-    hass.services.register(DOMAIN, "timesync", timeSync_handler)
+    hass.services.register(DOMAIN, SERVICE_NAME, timeSync_handler)
 
     # Return boolean to indicate that initialization was successful.
     return True

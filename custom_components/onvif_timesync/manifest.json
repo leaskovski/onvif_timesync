@@ -1,10 +1,10 @@
 {
   "domain": "onvif_timesync",
   "name": "ONVIF Time Syncrhonisation Tool",
+  "codeowners": ["@Leaskovski"],
+  "config_flow": true,
   "documentation": "https://github.com/leaskovski/onvif_timesync",
   "requirements": ["onvif_zeep==0.2.12"],
   "integration_type": "service",
-  "config_flow": true,
-  "single_config_entry": true,
-  "codeowners": ["@Leaskovski"]
+  "single_config_entry": true
 }
