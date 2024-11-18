@@ -4,8 +4,6 @@ from homeassistant.const import Platform
 NAME = "ONVIF Time Synchroniser"
 DOMAIN = "onvif_timesync"
 
-PLATFORMS = [Platform.SENSOR]
-
 SERVICE_NAME = "timesync"
 
 ATTR_ADDRESS = "Address"
