@@ -1,10 +1,10 @@
 timesync:
   fields:
-    Address:
+    address:
       required: true
-    Port:
+    port:
       required: true
-    Username:
+    username:
       required: true
-    Password:
+    password:
       required: true

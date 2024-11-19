@@ -6,7 +6,7 @@ DOMAIN = "onvif_timesync"
 
 SERVICE_NAME = "timesync"
 
-ATTR_ADDRESS = "Address"
-ATTR_PORT = "Port"
-ATTR_USER = "Username"
-ATTR_PWD = "Password"
+ATTR_ADDRESS = "address"
+ATTR_PORT = "port"
+ATTR_USER = "username"
+ATTR_PWD = "password"
