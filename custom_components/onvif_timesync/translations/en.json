@@ -1,0 +1,26 @@
+{
+    "services": {
+      "timesync": {
+        "name": "Time Sync",
+        "description": "Performs a Time Synchronisation of an ONVIF Camera",
+        "fields": {
+          "Address": {
+            "name": "Address",
+            "description": "The address of the camera to synchronise."
+          },
+          "Port": {
+            "name": "Port",
+            "description": "The port number to connect to on the camera."
+          },
+          "Username": {
+            "name": "Username",
+            "description": "The username to use to connect to the camera."
+          },
+          "Password": {
+            "name": "Password",
+            "description": "The password to use to connect to the camera."
+          }
+        }
+      }
+    }
+  }
